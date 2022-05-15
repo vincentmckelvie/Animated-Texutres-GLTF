@@ -31,9 +31,11 @@ for x in range(1,frames+1):
     newObj.data.materials.append(box_material_obj)
     
     bpy.context.scene.frame_set(x)
-
+    
     newObj.scale = [0.001,0.001,0.001]
-    newObj.keyframe_insert(data_path="scale", frame=x-1)
+    if x!=1:
+        newObj.keyframe_insert(data_path="scale", frame=x-1)
+    
     newObj.keyframe_insert(data_path="scale", frame=x+1)
     
     newObj.scale = [1,1,1]
